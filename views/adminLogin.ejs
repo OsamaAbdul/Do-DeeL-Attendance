@@ -1,0 +1,22 @@
+<%- include("partials/header.ejs") -%>
+
+<body>
+  <center>
+<div class="form-container">
+  <center>
+    
+    <img src="/logo.jpeg" alt="nysc logo"  width="75px" height="75px">
+
+</center
+    <p class="title">Welcome Back, <b>Admin</b></p>
+    <form class="form" action="/admin-view-attendance" method="POST">
+      <input type="text" name="username" class="input" placeholder="Enter Admin Username">
+      <input type="password" name="password" class="input" placeholder="Enter password">    
+      <button type="submit" class="form-btn">Login</button>
+    </form>
+    
+  </div>
+  <%- include("partials/footer.ejs") -%>
+</center>
+</body>
+</html>

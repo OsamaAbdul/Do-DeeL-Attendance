@@ -1,0 +1,50 @@
+
+
+
+<%- include("partials/header.ejs") -%>
+<center>
+<div id="preloader" class="loader">
+  <div data-glitch="Welcome to     DO DEEL..." class="glitch"></div>
+</div>
+</center>
+
+
+
+<div id="mainContent" class="container">
+
+  <center>
+<div class="form-container">
+
+    <center>
+    <img src="/logo.jpeg" alt="nysc logo"  width="75px" height="75px">
+
+  <center>
+    <p class="title">Do-Deel Attendance system</p>
+    <form class="form" action="/submit-attendance" method="POST">
+      <input type="text" name="stateCode" class="input" placeholder="Enter State Code">
+      <input type="text" name="name" class="input" placeholder="Enter your name">
+      <!-- <textarea class="input"  name="comments" placeholder="Excited about today's CDS? Drop a Commemt!..." rows="4" cols="50"></textarea> -->
+    
+      <button type="submit" class="form-btn">Submit Attendance</button>
+     
+    </form>
+    <form class="form" action="/submit-comment" method="GET">
+      <button type="submit" class="form-btn">Submit a Comment</button>
+    </form>
+    
+  </div>
+</div>
+
+<script>
+  
+  window.onload = function () {
+    setTimeout(function () {
+      document.getElementById("preloader").style.display = "none";
+      document.getElementById("mainContent").style.display = "block";
+    }, 1000);
+  };
+
+</script>
+</center>
+<%- include("partials/footer.ejs") -%>
+

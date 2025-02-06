@@ -1,0 +1,33 @@
+<%- include("partials/header.ejs") -%>
+
+<center>
+<div class="card"> 
+  <form class="form" action="/" method="GET">
+    <button  type="submit" class="dismiss">×</button>
+ </form>
+    <div class="header"> 
+      <div class="image">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <g stroke-width="0" id="SVGRepo_bgCarrier"></g>
+            <g stroke-linejoin="round" stroke-linecap="round" id="SVGRepo_tracerCarrier"></g>
+            <g id="SVGRepo_iconCarrier">
+              <path stroke-linejoin="round" stroke-linecap="round" stroke-width="1.5" stroke="#ff6b6b" d="M12 3L2 21h20L12 3z" fill="#ffe6e6"></path>
+              <path stroke-width="1.5" stroke="#ff0000" d="M12 9v4"></path>
+              <circle cx="12" cy="17" r="0.8" fill="#ff0000"></circle>
+            </g>
+          </svg>
+          
+        </div> 
+        <div class="content">
+           <span class="title">Invalid Username or Password</span> 
+           <p class="message">Try Logging in with valid credentials...</p> 
+        </div> 
+    <div class="actions">
+        <button type="button" style="background-color: #003500;" class="history">Go back</button> 
+        
+    </div> 
+        </div> 
+</div>
+</center>
+
+<%- include("partials/footer.ejs") -%>

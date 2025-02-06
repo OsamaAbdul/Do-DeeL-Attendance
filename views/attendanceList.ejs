@@ -1,0 +1,71 @@
+
+<%- include("partials/header.ejs") -%>
+<div class="container mt-5">
+  <h2 class="mb-4 text-center">Do - DeeL Attendance List</h2>
+  <button id="downloadPdf" style="color: white" class="btn btn-primary mb-3">Download PDF</button>
+  <br>
+  <br>
+
+  <div class="mb-3">
+    <input id="filterInput" type="text" class="form-control" placeholder="Search by Name, State Code, or Attendance Status">
+  </div>
+
+  <table id="attendanceTable" class="table table-bordered table-hover text-center">
+    <thead class="table-dark">
+      <tr>
+        <th>S/N</th>
+        <th>Name</th>
+        <th>State Code</th>
+        <th>Present/Absent</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% attendanceList.forEach((record, index) => { %>
+        <tr>
+          <td><%= index + 1 %></td>
+          <td><%= record.name || "N/A" %></td>
+          <td><%= record.stateCode || "N/A" %></td>
+          <td><%= record.attendancePresent ? "Present" : "Absent" %></td>
+          <td><%= record.date %></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>
+
+<script>
+  document.getElementById('downloadPdf').addEventListener('click', function () {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    doc.text("Do - DeeL Attendance List", 14, 10);
+
+    doc.autoTable({
+      html: '#attendanceTable',
+      startY: 20,
+    });
+
+    doc.save("AttendanceList.pdf");
+  });
+
+  // Filter table rows
+  document.getElementById('filterInput').addEventListener('keyup', function () {
+    const filterValue = this.value.toLowerCase();
+    const rows = document.querySelectorAll('#attendanceTable tbody tr');
+
+    rows.forEach(row => {
+      const name = row.cells[1].textContent.toLowerCase();
+      const stateCode = row.cells[2].textContent.toLowerCase();
+      const attendanceStatus = row.cells[3].textContent.toLowerCase();
+      const date = row.cells[3].textContent.toLowerCase();
+
+      if (name.includes(filterValue) || stateCode.includes(filterValue) || attendanceStatus.includes(filterValue)) {
+        row.style.display = '';
+      } else {
+        row.style.display = 'none';
+      }
+    });
+  });
+</script>
+<%- include("partials/footer.ejs") -%>
